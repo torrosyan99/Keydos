@@ -16,11 +16,25 @@
             rel="stylesheet"
         />
         <link
+            href="assets/styles/swiper-bundle.min.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="preload"
+            as="image"
+            href="assets/images/hero-collaboration-v3.png"
+            fetchpriority="high"
+        />
+        <link
             href="assets/styles/main.css"
             rel="stylesheet"
         />
         <script
             src="assets/scripts/main.js"
+            defer
+        ></script>
+        <script
+            src="assets/scripts/swiper-bundle.min.js"
             defer
         ></script>
         <script
@@ -32,7 +46,7 @@
         <!-- Site header -->
         <header
             id="site-header"
-            class="fixed inset-x-0 top-0 z-50 h-20 border-b border-c-border bg-white transition-[translate,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] data-[menu-open=true]:bg-c-light-alt"
+            class="fixed inset-x-0 top-0 z-50 h-20 border-b border-c-border bg-white transition-[translate,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [&_.mega-list]:space-y-3 [&_.mega-grid_.mega-item:hover]:bg-transparent [&_.mega-left_.link-arrow]:text-c-teal [&_.mega-left_.link-arrow:hover]:text-c-teal [&_.mega-left_.mega-link-icon]:bg-c-teal/10 [&_.mega-left_.mega-link-icon]:text-c-teal [&_.mega-left_.mega-link:hover]:text-c-dark [&_.mega-left_.mega-link:hover_.mega-link-icon]:bg-c-orange/15 [&_.mega-left_.mega-link:hover_.mega-link-icon]:text-c-orange [&_.mega-left_.mega-stat-icon]:text-c-teal"
             data-menu-open="false"
         >
             <div class="flex h-full items-center gap-6 px-md">
@@ -188,7 +202,7 @@
                     <div class="mega-left">
                         <h4 class="text-[#111111]">
                             Services
-                            <span class="text-c-orange">.</span>
+                            <span class="text-c-teal">.</span>
                         </h4>
                         <p class="mt-2 text-sm text-c-gray">
                             We design and develop scalable digital solutions tailored to your
@@ -283,7 +297,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mega-grid">
+                    <div class="mega-grid gap-[20px] xl:gap-[60px]">
                         <div class="mega-card">
                             <h3 class="mega-section-title">
                                 <span class="mega-section-marker"></span>Top Services
@@ -658,7 +672,7 @@
                 <div class="flex min-h-120">
                     <div class="mega-left">
                         <h4 class="text-[#111111]">
-                            Technologies<span class="text-c-orange">.</span>
+                            Technologies<span class="text-c-teal">.</span>
                         </h4>
                         <p class="mt-2 text-sm text-c-gray">
                             We use modern technologies to build scalable, high-performance digital
@@ -754,7 +768,7 @@
                         </div>
                     </div>
 
-                    <div class="mega-grid">
+                    <div class="mega-grid gap-[20px] xl:gap-[60px]">
                         <div class="mega-card">
                             <h3 class="mega-section-title">
                                 <span class="mega-section-marker"></span>Frontend &amp; Mobile
@@ -1130,7 +1144,7 @@
                     <div class="mega-left">
                         <h4 class="text-[#111111]">
                             Industries
-                            <span class="text-c-orange">.</span>
+                            <span class="text-c-teal">.</span>
                         </h4>
                         <p class="mt-2 text-sm text-c-gray">
                             We deliver tailored solutions across diverse industries and business
@@ -1226,7 +1240,7 @@
                         </div>
                     </div>
 
-                    <div class="mega-grid">
+                    <div class="mega-grid gap-[20px] xl:gap-[60px]">
                         <div class="mega-card">
                             <h3 class="mega-section-title">
                                 <span class="mega-section-marker"></span>Core Industries
@@ -1520,7 +1534,7 @@
                     <div class="mega-left">
                         <h4 class="text-[#111111]">
                             About
-                            <span class="text-c-orange">.</span>
+                            <span class="text-c-teal">.</span>
                         </h4>
                         <p class="mt-2 text-sm text-c-gray">
                             Learn more about Kkeydos — our mission, team, and how we can help you
@@ -1528,7 +1542,7 @@
                         </p>
                     </div>
 
-                    <div class="mega-grid">
+                    <div class="mega-grid gap-[20px] xl:gap-[60px]">
                         <div class="mega-card">
                             <h3 class="mega-section-title">
                                 <span class="mega-section-marker"></span>Company
@@ -1655,7 +1669,7 @@
             <!-- Mobile navigation -->
             <nav
                 id="mobile-menu"
-                class="absolute inset-x-0 top-full hidden max-h-[calc(100vh-80px)] overscroll-contain overflow-y-auto rounded-b-2xl border-b border-c-border bg-white px-5 pb-5 shadow-default lg:hidden"
+                class="fixed inset-x-0 bottom-0 top-20 hidden overscroll-contain overflow-y-auto bg-white px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] lg:hidden"
                 aria-label="Mobile navigation"
                 aria-hidden="true"
                 inert
@@ -2013,16 +2027,17 @@
         </header>
 
         <main>
-            <section
-                class="isolate overflow-hidden pt-section-desktop max-lg:pt-section-tablet max-md:pt-section-mobile"
-            >
+            <section class="relative isolate overflow-hidden">
                 <div
-                    class="home-shell grid items-center gap-10 py-14 sm:py-18 lg:min-h-[660px] lg:grid-cols-2 lg:gap-0"
+                    class="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.99)_0%,rgba(255,255,255,0.94)_70%,rgba(255,255,255,0.72)_100%),url('../images/hero-collaboration-v3.png')] bg-cover bg-[position:68%_50%] bg-no-repeat sm:bg-[linear-gradient(90deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.96)_42%,rgba(255,255,255,0.58)_72%,rgba(255,255,255,0.12)_100%),url('../images/hero-collaboration-v3.png')] sm:bg-[position:62%_50%] lg:bg-[linear-gradient(90deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_30%,rgba(255,255,255,0.94)_40%,rgba(255,255,255,0.62)_52%,rgba(255,255,255,0.18)_68%,rgba(255,255,255,0)_82%),url('../images/hero-collaboration-v3.png')] lg:bg-[position:58%_50%]"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="relative z-30 mx-auto flex w-full max-w-[1512px] items-center px-md pb-24 pt-32 sm:pb-32 sm:pt-40 lg:pb-40 lg:pt-50"
                 >
                     <div
-                        class="relative z-10 min-w-0 max-w-[720px]
-
-                         lg:pr-12"
+                        class="max-w-140"
                         data-rotator-scope
                     >
                         <p
@@ -2036,7 +2051,7 @@
                         </p>
                         <h1
                             id="hero-title"
-                            class="text-[36px] font-semibold leading-[1.08] tracking-[-0.045em] text-c-dark max-[379px]:text-[31px] sm:text-[48px] lg:text-[52px] xl:text-[62px]"
+                            class="font-semibold leading-[1.08] tracking-[-0.045em] text-c-dark"
                         >
                             Accelerate your product roadmap with scalable software solutions.
                             <span class="sr-only"
@@ -2045,7 +2060,7 @@
                             <span
                                 class="relative mt-2 block h-[1.25em] overflow-hidden text-c-orange"
                                 data-text-rotator
-                                data-rotator-interval="3200"
+                                data-rotator-interval="2200"
                                 aria-hidden="true"
                             >
                                 <span
@@ -2073,615 +2088,68 @@
                         </p>
                         <div class="mt-9 flex flex-wrap items-center gap-5">
                             <a
-                                class="btn-primary min-h-13 gap-4 px-6"
+                                class="btn-primary min-h-13 px-6"
                                 href="#"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 Schedule a Call
-                                <svg
-                                    class="size-4"
-                                    aria-hidden="true"
-                                >
-                                    <use href="assets/images/sprite.svg#arrow-right"></use>
-                                </svg>
                             </a>
                         </div>
                     </div>
-                    <div
-                        class="relative w-[calc(100%+var(--spacing-md))] min-w-0  lg:w-[50vw]"
-                    >
-                        <div
-                            class="relative isolate h-[320px] w-full overflow-hidden rounded-[100px_0_0_100px] bg-c-light shadow-default after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:border after:border-white/30 after:content-[''] sm:h-[500px] sm:rounded-[180px_0_0_180px] lg:h-[540px] lg:rounded-[240px_0_0_240px]"
-                        >
-                            <img
-                                class="block h-full w-full object-cover object-[58%_50%]"
-                                src="assets/images/hero-collaboration.png"
-                                width="1696"
-                                height="960"
-                                alt="A product team collaborating on design and software development"
-                                fetchpriority="high"
-                                decoding="async"
-                            />
-                            <div
-                                class="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_42%,rgba(5,43,48,0.88)_100%),linear-gradient(90deg,rgba(15,138,141,0.08),transparent_55%)]"
-                                aria-hidden="true"
-                            ></div>
-                            <div
-                                class="absolute inset-0 flex flex-col items-start justify-center pl-[clamp(2rem,5vw,4rem)] pr-8 text-left text-white [text-shadow:0_2px_18px_rgba(6,43,48,0.55)]"
-                            >
-                                <span
-                                    class="text-[10px] font-medium uppercase tracking-[0.16em] text-white/80"
-                                    >Built together. Built for you.</span
-                                >
-                                <p
-                                    class="mt-3 text-[32px] font-medium leading-[1.1] tracking-[-0.025em] lg:text-[40px]"
-                                >
-                                    From idea<br />to what's next<span class="text-c-orange"
-                                        >.</span
-                                    >
-                                </p>
-                            </div>
-                        </div>
-                        <span
-                            class="pointer-events-none absolute -left-2 top-1/2 h-20 w-1.5 -translate-y-1/2 rounded-full bg-c-orange shadow-accent"
-                            aria-hidden="true"
-                        ></span>
-                    </div>
                 </div>
+                <div
+                    class="pointer-events-none absolute -bottom-[165px] left-1/2 z-20 h-[245px] w-[137vw] -translate-x-1/2 rounded-[50%] bg-white sm:-bottom-[220px] sm:h-[320px] sm:w-[125vw] lg:-bottom-[310px] lg:h-[440px] lg:w-[118vw] xl:-bottom-[330px] xl:h-[470px]"
+                    aria-hidden="true"
+                ></div>
             </section>
             <section
-                class="bg-white py-14 sm:py-16 lg:py-20"
+                class="relative  z-30 -mt-8 bg-transparent pb-16 sm:-mt-12 sm:pb-20 lg:-mt-20 lg:pb-24"
                 aria-labelledby="clients-title"
             >
-                <div class="home-shell">
+                <div class="container max-w-[1200px]">
                     <div
-                        class="relative grid items-center gap-10 overflow-hidden rounded-[28px_76px_28px_28px] border border-c-border bg-white px-6 py-9 shadow-default sm:px-9 sm:py-11 lg:grid-cols-[390px_minmax(0,1fr)] lg:gap-12 lg:px-11 lg:py-12 xl:grid-cols-[430px_minmax(0,1fr)] xl:gap-16 xl:px-14"
+                        class="grid items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-18 xl:gap-24"
                     >
-                        <div class="min-w-0">
+                        <div class="max-w-[400px]">
                             <p
-                                class="mb-6 flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-c-teal"
+                                class="mb-5 flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-c-teal"
                             >
                                 <span
-                                    class="size-1.5 shrink-0 rounded-full bg-c-teal ring-4 ring-c-teal/5"
+                                    class="size-1.5 shrink-0 rounded-full bg-c-teal shadow-focus"
                                     aria-hidden="true"
                                 ></span>
                                 Trusted partnerships
                             </p>
                             <h2
                                 id="clients-title"
-                                class="max-w-[430px] text-[30px] font-semibold leading-[1.28] tracking-[-0.035em] text-c-slate sm:text-[34px] lg:text-[36px]"
+                                class="font-semibold leading-[1.15] tracking-[-0.04em] text-c-dark"
                             >
-                                <span class="inline font-semibold text-c-dark"
-                                    >268<span class="text-c-orange">+</span></span
-                                >
-                                <span class="inline">
-                                    companies rely on KKEYDOS
-                                    <span class="text-c-orange shadow-highlight"
-                                        >to build and scale</span
-                                    >
-                                    high-performing digital products<span class="text-c-orange"
-                                        >.</span
-                                    >
-                                </span>
+                                <span class="text-c-orange">268+</span> companies rely on KKEYDOS to
+                                build products that scale.
                             </h2>
-                            <a
-                                class="group mt-6 inline-flex items-center gap-2 rounded-md text-sm font-semibold text-c-teal transition-colors hover:text-c-dark"
-                                href="#"
-                            >
-                                See what we build together
-                                <svg
-                                    class="size-4 shrink-0 transition-transform group-hover:translate-x-1"
-                                    aria-hidden="true"
-                                >
-                                    <use href="assets/images/sprite.svg#arrow-right"></use>
-                                </svg>
-                            </a>
+                            <p class="mt-5 max-w-[470px] text-base leading-7 text-c-gray">
+                                From the first product decision to long-term growth, our teams build
+                                alongside yours.
+                            </p>
                         </div>
+
                         <div
-                            class="min-w-0 overflow-hidden lg:border-l lg:border-c-border/70 lg:py-3 lg:pl-9 xl:pl-12 [&_.client-logo-item]:w-[184px] sm:[&_.client-logo-item]:w-[198px] [&_.client-logo-item>a]:h-[138px] [&_.client-logo-item>a]:border [&_.client-logo-item>a]:border-c-border/60 [&_.client-logo-item>a]:bg-c-light-alt/70 [&_.client-logo-item>a]:px-5 [&_.client-logo-item>a]:pb-8 [&_.client-logo-item>a]:pt-2 [&_.client-logo-item>a]:shadow-none [&_.client-logo-item>a]:transition-[background-color,border-color,box-shadow] [&_.client-logo-item>a]:duration-300 [&_.client-logo-item>a:hover]:border-c-orange/30 [&_.client-logo-item>a:hover]:bg-white [&_.client-logo-item>a:hover]:shadow-default [&_.client-logo-item>a:hover_img]:scale-[1.03] [&_.client-case-study]:absolute [&_.client-case-study]:bottom-3 [&_.client-case-study]:inline-flex [&_.client-case-study]:translate-y-1 [&_.client-case-study]:items-center [&_.client-case-study]:gap-2 [&_.client-case-study]:text-[10px] [&_.client-case-study]:font-semibold [&_.client-case-study]:uppercase [&_.client-case-study]:tracking-[0.09em] [&_.client-case-study]:text-c-orange [&_.client-case-study]:opacity-0 [&_.client-case-study]:transition-[opacity,translate] [&_.client-case-study]:duration-200 [&_.client-case-arrow]:size-3 [&_.client-case-arrow]:shrink-0 [&_.client-logo-item>a:hover_.client-case-study]:translate-y-0 [&_.client-logo-item>a:hover_.client-case-study]:opacity-100"
-                            data-carousel
-                            data-carousel-speed="34"
+                            class="min-w-0"
+                            data-partners-carousel
+                            data-carousel-interval="2800"
+                            role="region"
+                            aria-label="Featured client work"
                         >
                             <div
-                                class="clients-marquee"
-                                data-carousel-viewport
+                                class="swiper overflow-hidden pb-1"
+                                data-partners-viewport
                             >
-                                <div
-                                    class="clients-track"
-                                    data-carousel-track
-                                >
-                                    <ul
-                                        class="clients-list"
-                                        data-carousel-list
-                                        aria-label="Selected clients"
-                                    >
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Ingresos"
-                                                ><img
-                                                    class="h-[52px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/ingresos.png"
-                                                    alt="Ingresos"
-                                                    width="183"
-                                                    height="52"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Flycorpo"
-                                                ><img
-                                                    class="h-[52px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/flycorpo.png"
-                                                    alt="Flycorpo"
-                                                    width="193"
-                                                    height="75"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Black Koffee"
-                                                ><img
-                                                    class="h-[52px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/black-koffee.png"
-                                                    alt="Black Koffee"
-                                                    width="605"
-                                                    height="209"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Keystone Design Studios"
-                                                ><img
-                                                    class="h-[52px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/keystone.png"
-                                                    alt="Keystone Design Studios"
-                                                    width="250"
-                                                    height="79"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Got Leads 365"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/got-leads-365.jpg"
-                                                    alt="Got Leads 365"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: WonderInsure"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/wonder-insure.jpg"
-                                                    alt="WonderInsure"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Wipro"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/310541625333299.jpg"
-                                                    alt="Wipro"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Abhaya"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/337061620148002.jpg"
-                                                    alt="Abhaya"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Neurocruit"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/347041762586222.png"
-                                                    alt="Neurocruit"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Blue Fence Systems"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/351791620208194.png"
-                                                    alt="Blue Fence Systems"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: CS"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/395131762586144.webp"
-                                                    alt="CS"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: From Banaras"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/420951762586068.webp"
-                                                    alt="From Banaras"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Balaji Healthy Finance"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/458901762586108.webp"
-                                                    alt="Balaji Healthy Finance"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: BNS Global Industries"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/495271762586386.webp"
-                                                    alt="BNS Global Industries"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Felora"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/648341620208279.png"
-                                                    alt="Felora"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Empfly"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/649151762586163.png"
-                                                    alt="Empfly"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Jreem"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/762011762586412.webp"
-                                                    alt="Jreem"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Visualskill Institution"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/805151762586333.webp"
-                                                    alt="Visualskill Institution"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Inovora Technologies"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/825491620208131.jpg"
-                                                    alt="Inovora Technologies"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Skyourneeds"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/872361627578522.png"
-                                                    alt="Skyourneeds"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: The Pure Hearts"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/903061762586430.png"
-                                                    alt="The Pure Hearts"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                        <li class="client-logo-item">
-                                            <a
-                                                class="group relative flex h-[156px] items-center justify-center rounded-xl bg-white px-4 pb-10 pt-3"
-                                                href="#"
-                                                aria-label="Read case study: Tangent Services Corporation"
-                                                ><img
-                                                    class="h-[84px] w-full max-w-[160px] object-contain grayscale opacity-75 transition-[filter,opacity] duration-[250ms] group-hover:grayscale-0 group-hover:opacity-100"
-                                                    src="assets/images/clients/906681762586271.jpeg"
-                                                    alt="Tangent Services Corporation"
-                                                    width="300"
-                                                    height="200"
-                                                    decoding="async" /><span
-                                                    class="client-case-study"
-                                                    >Read case study<svg
-                                                        class="client-case-arrow"
-                                                        aria-hidden="true"
-                                                    >
-                                                        <use
-                                                            href="assets/images/sprite.svg#arrow-right"
-                                                        ></use></svg></span
-                                            ></a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <ul
+                                    class="swiper-wrapper"
+                                    data-partners-track
+                                    aria-label="Client case studies"
+                                ></ul>
                             </div>
                         </div>
                     </div>

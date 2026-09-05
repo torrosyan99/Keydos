@@ -17,5 +17,8 @@
         "prettier": "^3.9.6",
         "simple-icons": "^16.29.0",
         "tailwindcss": "^4.3.3"
+    },
+    "dependencies": {
+        "swiper": "^14.2.0"
     }
 }

@@ -2,7 +2,167 @@
     'use strict';
 
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const partners = [
+        { src: 'assets/images/clients/ingresos.png', name: 'Ingresos', width: 183, height: 52 },
+        { src: 'assets/images/clients/flycorpo.png', name: 'Flycorpo', width: 193, height: 75 },
+        {
+            src: 'assets/images/clients/black-koffee.png',
+            name: 'Black Koffee',
+            width: 605,
+            height: 209,
+        },
+        {
+            src: 'assets/images/clients/got-leads-365.jpg',
+            name: 'Got Leads 365',
+            width: 300,
+            height: 200,
+        },
+        {
+            src: 'assets/images/clients/347041762586222.png',
+            name: 'Neurocruit',
+            width: 300,
+            height: 200,
+        },
+        {
+            src: 'assets/images/clients/351791620208194.png',
+            name: 'Blue Fence Systems',
+            width: 300,
+            height: 200,
+        },
+        {
+            src: 'assets/images/clients/648341620208279.png',
+            name: 'Felora',
+            width: 300,
+            height: 200,
+        },
+        {
+            src: 'assets/images/clients/903061762586430.png',
+            name: 'The Pure Hearts',
+            width: 300,
+            height: 200,
+        },
+    ];
 
+    const createPartnerSlide = ({ src, name, width, height }) => {
+        const item = document.createElement('li');
+        const content = document.createElement('div');
+        const image = document.createElement('img');
+        const link = document.createElement('a');
+        const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+
+        item.className = 'swiper-slide group';
+        content.className =
+            'flex min-h-[148px] flex-col items-center justify-center gap-4 px-1 text-center sm:min-h-[160px]';
+
+        image.className = 'h-16 w-full max-w-[150px] object-contain sm:h-18';
+        image.src = src;
+        image.alt = name;
+        image.width = width;
+        image.height = height;
+        image.loading = 'lazy';
+        image.decoding = 'async';
+
+        link.className =
+            'inline-flex items-center gap-1.5 self-center text-[9px] font-semibold uppercase tracking-[0.08em] text-c-orange transition-colors hover:text-c-teal lg:translate-y-1 lg:opacity-0 lg:transition-[color,opacity,translate] lg:duration-200 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 lg:group-focus-within:translate-y-0 lg:group-focus-within:opacity-100';
+        link.href = '#';
+        link.setAttribute('aria-label', `Read case study: ${name}`);
+        link.append('READ CASE STUDY');
+        icon.setAttribute('class', 'size-3 shrink-0');
+        icon.setAttribute('aria-hidden', 'true');
+        use.setAttribute('href', 'assets/images/sprite.svg#arrow-right');
+        icon.append(use);
+        link.append(icon);
+
+        content.append(image, link);
+        item.append(content);
+        return item;
+    };
+
+    const createPartnerControls = (carousel) => {
+        const controls = document.createElement('div');
+        const previousButton = document.createElement('button');
+        const nextButton = document.createElement('button');
+        const createArrow = (isPrevious = false) => {
+            const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            const arrowUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+
+            arrow.setAttribute('class', `size-3.5${isPrevious ? ' rotate-180' : ''}`);
+            arrow.setAttribute('aria-hidden', 'true');
+            arrowUse.setAttribute('href', 'assets/images/sprite.svg#arrow-right');
+            arrow.append(arrowUse);
+            return arrow;
+        };
+
+        controls.className = 'mt-4 flex justify-end gap-2';
+
+        previousButton.type = 'button';
+        previousButton.className =
+            'inline-flex size-10 items-center justify-center rounded-full bg-c-orange/10 text-c-orange transition-colors hover:bg-c-teal/15 hover:text-c-teal disabled:pointer-events-none disabled:opacity-30';
+        previousButton.setAttribute('aria-label', 'Previous partner');
+        previousButton.append(createArrow(true));
+
+        nextButton.type = 'button';
+        nextButton.className =
+            'inline-flex size-10 items-center justify-center rounded-full bg-c-orange/10 text-c-orange transition-colors hover:bg-c-teal/15 hover:text-c-teal disabled:pointer-events-none disabled:opacity-30';
+        nextButton.setAttribute('aria-label', 'Next partner');
+        nextButton.append(createArrow());
+
+        controls.append(previousButton, nextButton);
+        carousel.append(controls);
+
+        return { previousButton, nextButton };
+    };
+
+    const initPartnersCarousel = (carousel) => {
+        if (carousel.dataset.uiReady === 'true' || typeof window.Swiper !== 'function') return;
+
+        const viewport = carousel.querySelector('[data-partners-viewport]');
+        const track = carousel.querySelector('[data-partners-track]');
+        if (!viewport || !track) return;
+
+        const fragment = document.createDocumentFragment();
+        partners.forEach((partner) => fragment.append(createPartnerSlide(partner)));
+        track.replaceChildren(fragment);
+
+        const controls = createPartnerControls(carousel);
+        const autoplayDelay = Number(carousel.dataset.carouselInterval) || 3000;
+        const swiper = new window.Swiper(viewport, {
+            slidesPerView: 2,
+            spaceBetween: 12,
+            loop: true,
+            speed: 650,
+            grabCursor: false,
+            watchOverflow: true,
+            autoplay: motionPreference.matches
+                ? false
+                : {
+                      delay: autoplayDelay,
+                      disableOnInteraction: false,
+                      pauseOnMouseEnter: true,
+                  },
+            navigation: {
+                prevEl: controls.previousButton,
+                nextEl: controls.nextButton,
+            },
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+            },
+            a11y: {
+                enabled: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                },
+            },
+        });
+
+        carousel.swiper = swiper;
+        carousel.dataset.uiReady = 'true';
+    };
     const initRotator = (rotator) => {
         if (rotator.dataset.uiReady === 'true') return;
 
@@ -118,96 +278,11 @@
         schedule();
     };
 
-    const initCarousel = (carousel) => {
-        if (carousel.dataset.uiReady === 'true') return;
-
-        const viewport = carousel.querySelector('[data-carousel-viewport]');
-        const track = carousel.querySelector('[data-carousel-track]');
-        const list = carousel.querySelector('[data-carousel-list]');
-        const toggle = carousel.querySelector('[data-carousel-toggle]');
-        if (!viewport || !track || !list) return;
-
-        const duplicate = list.cloneNode(true);
-        duplicate.removeAttribute('data-carousel-list');
-        duplicate.removeAttribute('aria-label');
-        duplicate.setAttribute('aria-hidden', 'true');
-        duplicate.classList.add('clients-list--duplicate');
-        duplicate
-            .querySelectorAll('a, button')
-            .forEach((item) => item.setAttribute('tabindex', '-1'));
-        track.append(duplicate);
-
-        const speed = Number(carousel.dataset.carouselSpeed) || 34;
-        let manual = false;
-        let pausedByUser = false;
-
-        const updateToggle = () => {
-            if (!toggle) return;
-            toggle.dataset.paused = String(pausedByUser);
-            toggle.setAttribute('aria-pressed', String(pausedByUser));
-            toggle.setAttribute(
-                'aria-label',
-                pausedByUser ? 'Resume client carousel' : 'Pause client carousel',
-            );
-        };
-
-        const syncCarousel = () => {
-            const animated = !motionPreference.matches && !manual;
-            viewport.classList.toggle('is-animated', animated);
-            viewport.classList.toggle('is-paused', document.hidden || pausedByUser);
-            updateToggle();
-        };
-
-        const sizeAnimation = () => {
-            const listWidth = list.getBoundingClientRect().width;
-            if (listWidth) track.style.setProperty('--carousel-duration', `${listWidth / speed}s`);
-        };
-
-        toggle?.addEventListener('click', () => {
-            pausedByUser = !pausedByUser;
-            syncCarousel();
-        });
-
-        viewport.addEventListener('focusin', (event) => {
-            const focusable = event.target.closest('a, button');
-            if (!focusable || !list.contains(focusable) || !focusable.matches(':focus-visible'))
-                return;
-            manual = true;
-            syncCarousel();
-            const itemBox = focusable.getBoundingClientRect();
-            const viewportBox = viewport.getBoundingClientRect();
-            viewport.scrollLeft +=
-                itemBox.left - viewportBox.left - (viewport.clientWidth - itemBox.width) / 2;
-        });
-
-        viewport.addEventListener(
-            'pointerdown',
-            (event) => {
-                if (event.pointerType !== 'touch' || !viewport.classList.contains('is-animated'))
-                    return;
-                const offset = -new DOMMatrixReadOnly(getComputedStyle(track).transform).m41;
-                manual = true;
-                syncCarousel();
-                viewport.scrollLeft = offset;
-            },
-            { passive: true },
-        );
-
-        if ('ResizeObserver' in window) new ResizeObserver(sizeAnimation).observe(list);
-        else window.addEventListener('resize', sizeAnimation);
-
-        motionPreference.addEventListener('change', syncCarousel);
-        document.addEventListener('visibilitychange', syncCarousel);
-        carousel.dataset.uiReady = 'true';
-        sizeAnimation();
-        syncCarousel();
-    };
-
     const init = (root = document) => {
         root.querySelectorAll('[data-text-rotator]').forEach(initRotator);
-        root.querySelectorAll('[data-carousel]').forEach(initCarousel);
+        root.querySelectorAll('[data-partners-carousel]').forEach(initPartnersCarousel);
     };
 
-    window.HomepageUI = { init, initRotator, initCarousel };
+    window.HomepageUI = { init, initRotator, initPartnersCarousel };
     init();
 })();
