@@ -1,0 +1,10 @@
+.idea
+examle
+node_modules
+
+
+# Local build helpers stay out of the repository.
+/scripts/
+
+# Browser runtime scripts are part of the site and stay tracked.
+!/assets/scripts/
