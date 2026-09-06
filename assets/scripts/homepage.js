@@ -43,7 +43,7 @@
         },
     ];
 
-    const createPartnerSlide = ({ src, name, width, height }) => {
+    const createPartnerItem = ({ src, name, width, height }) => {
         const item = document.createElement('li');
         const content = document.createElement('div');
         const image = document.createElement('img');
@@ -51,11 +51,13 @@
         const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
 
-        item.className = 'swiper-slide group';
+        item.className =
+            'group flex w-[160px] shrink-0 justify-center md:w-[190px] min-[992px]:w-[210px]';
+        item.dataset.partnerItem = '';
         content.className =
-            'flex min-h-[148px] flex-col items-center justify-center gap-4 px-1 text-center sm:min-h-[160px]';
+            'flex min-h-[145px] flex-col items-center justify-center gap-5 px-1 text-center md:min-h-[170px] lg:min-h-[190px]';
 
-        image.className = 'h-16 w-full max-w-[150px] object-contain sm:h-18';
+        image.className = 'h-[86px] w-[130px] max-w-none object-contain md:h-[100px] md:w-[150px]';
         image.src = src;
         image.alt = name;
         image.width = width;
@@ -79,88 +81,120 @@
         return item;
     };
 
-    const createPartnerControls = (carousel) => {
-        const controls = document.createElement('div');
-        const previousButton = document.createElement('button');
-        const nextButton = document.createElement('button');
-        const createArrow = (isPrevious = false) => {
-            const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            const arrowUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+    const waitForImages = (images) =>
+        Promise.all(
+            images.map(
+                (image) =>
+                    new Promise((resolve) => {
+                        if (image.complete) {
+                            resolve();
+                            return;
+                        }
 
-            arrow.setAttribute('class', `size-3.5${isPrevious ? ' rotate-180' : ''}`);
-            arrow.setAttribute('aria-hidden', 'true');
-            arrowUse.setAttribute('href', 'assets/images/sprite.svg#arrow-right');
-            arrow.append(arrowUse);
-            return arrow;
-        };
+                        image.addEventListener('load', resolve, { once: true });
+                        image.addEventListener('error', resolve, { once: true });
+                    }),
+            ),
+        );
 
-        controls.className = 'mt-4 flex justify-end gap-2';
+    const initPartnersMarquee = async (carousel) => {
+        if (carousel.dataset.uiReady || typeof window.marquee6k !== 'function') return;
 
-        previousButton.type = 'button';
-        previousButton.className =
-            'inline-flex size-10 items-center justify-center rounded-full bg-c-orange/10 text-c-orange transition-colors hover:bg-c-teal/15 hover:text-c-teal disabled:pointer-events-none disabled:opacity-30';
-        previousButton.setAttribute('aria-label', 'Previous partner');
-        previousButton.append(createArrow(true));
-
-        nextButton.type = 'button';
-        nextButton.className =
-            'inline-flex size-10 items-center justify-center rounded-full bg-c-orange/10 text-c-orange transition-colors hover:bg-c-teal/15 hover:text-c-teal disabled:pointer-events-none disabled:opacity-30';
-        nextButton.setAttribute('aria-label', 'Next partner');
-        nextButton.append(createArrow());
-
-        controls.append(previousButton, nextButton);
-        carousel.append(controls);
-
-        return { previousButton, nextButton };
-    };
-
-    const initPartnersCarousel = (carousel) => {
-        if (carousel.dataset.uiReady === 'true' || typeof window.Swiper !== 'function') return;
-
-        const viewport = carousel.querySelector('[data-partners-viewport]');
+        const marquee = carousel.querySelector('[data-partners-marquee]');
         const track = carousel.querySelector('[data-partners-track]');
-        if (!viewport || !track) return;
+        if (!marquee || !track) return;
+
+        carousel.dataset.uiReady = 'loading';
 
         const fragment = document.createDocumentFragment();
-        partners.forEach((partner) => fragment.append(createPartnerSlide(partner)));
+        partners.forEach((partner) => fragment.append(createPartnerItem(partner)));
         track.replaceChildren(fragment);
 
-        const controls = createPartnerControls(carousel);
-        const autoplayDelay = Number(carousel.dataset.carouselInterval) || 3000;
-        const swiper = new window.Swiper(viewport, {
-            slidesPerView: 2,
-            spaceBetween: 12,
-            loop: true,
-            speed: 650,
-            grabCursor: false,
-            watchOverflow: true,
-            autoplay: motionPreference.matches
-                ? false
-                : {
-                      delay: autoplayDelay,
-                      disableOnInteraction: false,
-                      pauseOnMouseEnter: true,
-                  },
-            navigation: {
-                prevEl: controls.previousButton,
-                nextEl: controls.nextButton,
-            },
-            keyboard: {
-                enabled: true,
-                onlyInViewport: true,
-            },
-            a11y: {
-                enabled: true,
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 3,
-                    spaceBetween: 16,
-                },
-            },
+        await Promise.all([
+            waitForImages([...track.querySelectorAll('img')]),
+            document.fonts?.ready || Promise.resolve(),
+        ]);
+
+        if (motionPreference.matches) {
+            carousel.dataset.uiReady = 'true';
+            return;
+        }
+
+        window.marquee6k.init({ selector: 'partners-marquee' });
+
+        const pixelsPerSecond = Number(carousel.dataset.carouselSpeed) || 100;
+        const instanceIndex = window.MARQUEES?.findIndex(
+            (instance) => instance.element === marquee,
+        );
+        if (instanceIndex < 0) return;
+
+        const instance = window.MARQUEES[instanceIndex];
+        const mobileMarquee = window.matchMedia('(max-width: 767px)');
+        let previousFrame = performance.now();
+        instance.animate = () => {
+            const currentFrame = performance.now();
+            const elapsed = Math.min(currentFrame - previousFrame, 32);
+            previousFrame = currentFrame;
+            if (instance.paused || !instance.contentWidth) return;
+
+            const distance = pixelsPerSecond * (elapsed / 1000);
+            instance.offset += instance.reverse ? distance : -distance;
+
+            if (instance.reverse && instance.offset >= 0) {
+                instance.offset -= instance.contentWidth;
+            } else if (!instance.reverse && instance.offset <= -instance.contentWidth) {
+                instance.offset += instance.contentWidth;
+            }
+
+            instance.wrapper.style.transform = `translate3d(${instance.offset}px, 0, 0)`;
+        };
+
+        const syncMotionMode = () => {
+            previousFrame = performance.now();
+            instance.paused = mobileMarquee.matches;
+        };
+
+        marquee.addEventListener('pointerover', (event) => {
+            if (event.target.closest('[data-partner-item]')) instance.paused = true;
+        });
+        marquee.addEventListener('pointerout', (event) => {
+            const currentItem = event.target.closest('[data-partner-item]');
+            if (!currentItem) return;
+
+            const nextItem =
+                event.relatedTarget instanceof Element
+                    ? event.relatedTarget.closest('[data-partner-item]')
+                    : null;
+            if (currentItem === nextItem) return;
+            instance.paused = mobileMarquee.matches || Boolean(nextItem);
+        });
+        marquee.addEventListener('focusin', (event) => {
+            if (event.target.closest('[data-partner-item]')) instance.paused = true;
+        });
+        marquee.addEventListener('focusout', () => {
+            window.requestAnimationFrame(() => {
+                if (!marquee.contains(document.activeElement)) {
+                    instance.paused = mobileMarquee.matches;
+                }
+            });
         });
 
-        carousel.swiper = swiper;
+        mobileMarquee.addEventListener('change', syncMotionMode);
+        syncMotionMode();
+
+        const syncDimensions = () => {
+            window.marquee6k.refresh(instanceIndex);
+        };
+
+        syncDimensions();
+        if ('ResizeObserver' in window) {
+            let resizeFrame;
+            new ResizeObserver(() => {
+                window.cancelAnimationFrame(resizeFrame);
+                resizeFrame = window.requestAnimationFrame(syncDimensions);
+            }).observe(carousel);
+        }
+
         carousel.dataset.uiReady = 'true';
     };
     const initRotator = (rotator) => {
@@ -280,9 +314,9 @@
 
     const init = (root = document) => {
         root.querySelectorAll('[data-text-rotator]').forEach(initRotator);
-        root.querySelectorAll('[data-partners-carousel]').forEach(initPartnersCarousel);
+        root.querySelectorAll('[data-partners-carousel]').forEach(initPartnersMarquee);
     };
 
-    window.HomepageUI = { init, initRotator, initPartnersCarousel };
+    window.HomepageUI = { init, initRotator, initPartnersMarquee };
     init();
 })();

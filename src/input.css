@@ -12,6 +12,7 @@
     --color-c-light: #f6f7f8;
     --color-c-light-alt: #f8fafc;
     --color-c-border: #e2e8f0;
+    --color-c-blue: #1764ca;
 
     --spacing-xs: 8px;
     --spacing-sm: 16px;
@@ -97,6 +98,55 @@
 
 
 @layer components {
+    .marquee6k__wrapper {
+        @apply will-change-transform;
+        backface-visibility: hidden;
+    }
+
+    .partners-marquee {
+        @apply overflow-hidden;
+        mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            #000 4%,
+            #000 96%,
+            transparent
+        );
+    }
+
+    @media (max-width: 767px) {
+        .partners-marquee {
+            @apply overflow-x-auto overscroll-x-contain;
+            mask-image: none;
+            -webkit-mask-image: none;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            touch-action: pan-x pan-y;
+            user-select: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .marquee6k__wrapper {
+                width: max-content;
+                transform: none !important;
+            }
+
+        }
+    }
+
+    .partners-marquee__copy {
+        @apply box-border pr-6;
+    }
+
+    .service-tag {
+        @apply inline-flex cursor-default items-center justify-center rounded-lg border border-c-blue px-2.5 py-1.5;
+        @apply text-sm font-medium leading-5 text-c-blue transition-colors duration-200;
+        @apply hover:bg-c-blue hover:text-white;
+    }
+
     .hero-heading {
         @apply text-left text-[72px] font-medium leading-[80px] text-c-dark-alt;
     }

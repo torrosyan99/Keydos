@@ -16,10 +16,6 @@
             rel="stylesheet"
         />
         <link
-            href="assets/styles/swiper-bundle.min.css"
-            rel="stylesheet"
-        />
-        <link
             rel="preload"
             as="image"
             href="assets/images/hero-collaboration-v3.png"
@@ -34,7 +30,7 @@
             defer
         ></script>
         <script
-            src="assets/scripts/swiper-bundle.min.js"
+            src="assets/scripts/marquee6k.js"
             defer
         ></script>
         <script
@@ -1539,8 +1535,8 @@
                             <span class="text-c-teal">.</span>
                         </h4>
                         <p class="mt-2 text-sm text-c-gray">
-                            Learn more about Kkeydos — our mission, team, and how we can help you
-                            succeed.
+                            Learn more about Kkeydos РІР‚вЂќ our mission, team, and how we can help
+                            you succeed.
                         </p>
                     </div>
 
@@ -2023,8 +2019,8 @@
                                         <p
                                             class="border-l-2 border-c-orange pl-4 text-sm leading-6 text-c-gray"
                                         >
-                                            Learn more about Kkeydos — our mission, team, and how we
-                                            can help you succeed.
+                                            Learn more about Kkeydos РІР‚вЂќ our mission, team, and
+                                            how we can help you succeed.
                                         </p>
                                     </div>
                                 </div>
@@ -2132,7 +2128,7 @@
                 ></div>
             </section>
             <section
-                class="relative z-30 -mt-2 bg-transparent pb-16 sm:-mt-4 sm:pb-20 lg:-mt-8 lg:pb-24"
+                class="relative z-30 -mt-2 bg-transparent sm:-mt-4 lg:-mt-8 lg:pb-24"
                 aria-labelledby="clients-title"
             >
                 <div class="container max-w-[1200px] px-20 max-xl:px-16 max-lg:px-10 max-sm:px-6">
@@ -2165,21 +2161,207 @@
                         <div
                             class="min-w-0"
                             data-partners-carousel
-                            data-carousel-interval="2800"
+                            data-carousel-speed="100"
                             role="region"
                             aria-label="Featured client work"
                         >
                             <div
-                                class="swiper overflow-hidden pb-1"
-                                data-partners-viewport
+                                class="partners-marquee pb-1"
+                                data-partners-marquee
+                                data-speed="0.1"
+                                data-pausable="false"
                             >
-                                <ul
-                                    class="swiper-wrapper"
-                                    data-partners-track
-                                    aria-label="Client case studies"
-                                ></ul>
+                                <div>
+                                    <ul
+                                        class="flex w-max items-center gap-6"
+                                        data-partners-track
+                                        aria-label="Client case studies"
+                                    ></ul>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="bg-white py-20 lg:py-24"
+                aria-labelledby="services-title"
+            >
+                <div class="container">
+                    <div
+                        class="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
+                    >
+                        <h2
+                            id="services-title"
+                            class="max-w-[900px] font-medium text-[#111111]"
+                        >
+                            Full-stack expertise, built for scale.
+                            <span class="block"
+                                >Driving execution across every phase of the SDLC<span
+                                    class="text-c-orange"
+                                    >.</span
+                                ></span
+                            >
+                        </h2>
+                        <a
+                            class="group inline-flex w-44 shrink-0 overflow-hidden border-b-2 border-[#111111] pb-2 text-sm font-medium text-[#111111]"
+                            href="#"
+                        >
+                            <span
+                                class="inline-flex w-max items-center gap-2 transition-transform duration-400 ease-out group-hover:translate-x-[calc((11rem-100%)/2)]"
+                            >
+                                Everything we do
+                                <svg
+                                    class="size-4 shrink-0"
+                                    aria-hidden="true"
+                                >
+                                    <use href="assets/images/sprite.svg#arrow-right"></use>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                        <article class="flex h-full flex-col rounded-xl bg-c-light p-6 xl:p-10">
+                            <div
+                                class="mb-4 flex items-center gap-4 sm:mb-2 sm:flex-col sm:items-start"
+                            >
+                                <svg
+                                    class="size-16 shrink-0 rounded-xl bg-[#d6542e] p-2 text-white"
+                                    aria-hidden="true"
+                                >
+                                    <use href="assets/images/sprite.svg#service-frontend"></use>
+                                </svg>
+                                <h3 class="font-normal text-black">Front-End Development</h3>
+                            </div>
+                            <p class="mb-6 text-base leading-6 text-[#272e34]">
+                                Build modern frontends designed for performance, accessibility, and
+                                scale.
+                            </p>
+                            <ul class="mt-auto flex flex-wrap gap-2">
+                                <li><span class="service-tag">Front-End</span></li>
+                                <li><span class="service-tag">Web Development</span></li>
+                                <li><span class="service-tag">React</span></li>
+                                <li><span class="service-tag">Angular</span></li>
+                            </ul>
+                        </article>
+
+                        <article class="flex h-full flex-col rounded-xl bg-c-light p-6 xl:p-10">
+                            <div
+                                class="mb-4 flex items-center gap-4 sm:mb-2 sm:flex-col sm:items-start"
+                            >
+                                <svg
+                                    class="size-16 shrink-0 rounded-xl bg-[#272e34] p-2 text-white"
+                                    aria-hidden="true"
+                                >
+                                    <use href="assets/images/sprite.svg#service-backend"></use>
+                                </svg>
+                                <h3 class="font-normal text-black">Back-End Development</h3>
+                            </div>
+                            <p class="mb-6 text-base leading-6 text-[#272e34]">
+                                Develop secure, scalable backends that perform reliably under load.
+                            </p>
+                            <ul class="mt-auto flex flex-wrap gap-2">
+                                <li><span class="service-tag">Back-End</span></li>
+                                <li><span class="service-tag">Database</span></li>
+                                <li><span class="service-tag">Go</span></li>
+                                <li><span class="service-tag">.NET</span></li>
+                                <li><span class="service-tag">Java</span></li>
+                                <li><span class="service-tag">Node.js</span></li>
+                            </ul>
+                        </article>
+
+                        <article class="flex h-full flex-col rounded-xl bg-c-light p-6 xl:p-10">
+                            <div
+                                class="mb-4 flex items-center gap-4 sm:mb-2 sm:flex-col sm:items-start"
+                            >
+                                <svg
+                                    class="size-16 shrink-0 rounded-xl bg-[#10468e] p-2 text-white"
+                                    aria-hidden="true"
+                                >
+                                    <use href="assets/images/sprite.svg#service-ai"></use>
+                                </svg>
+                                <h3 class="font-normal text-black">AI and Machine Learning</h3>
+                            </div>
+                            <p class="mb-6 text-base leading-6 text-[#272e34]">
+                                Deploy trustworthy AI solutions that create real business value.
+                            </p>
+                            <ul class="mt-auto flex flex-wrap gap-2">
+                                <li><span class="service-tag">AI</span></li>
+                                <li><span class="service-tag">Machine Learning</span></li>
+                                <li><span class="service-tag">Data Science</span></li>
+                                <li><span class="service-tag">LLMs</span></li>
+                                <li><span class="service-tag">Generative AI</span></li>
+                                <li><span class="service-tag">Python</span></li>
+                            </ul>
+                        </article>
+
+                        <article class="flex h-full flex-col rounded-xl bg-c-light p-6 xl:p-10">
+                            <div
+                                class="mb-4 flex items-center gap-4 sm:mb-2 sm:flex-col sm:items-start"
+                            >
+                                <svg
+                                    class="size-16 shrink-0 rounded-xl bg-c-blue p-2 text-white"
+                                    aria-hidden="true"
+                                >
+                                    <use href="assets/images/sprite.svg#service-mobile"></use>
+                                </svg>
+                                <h3 class="font-normal text-black">Mobile Development</h3>
+                            </div>
+                            <p class="mb-6 text-base leading-6 text-[#272e34]">
+                                Launch iOS and Android apps with smooth performance, stable
+                                sessions, and secure data handling.
+                            </p>
+                            <ul class="mt-auto flex flex-wrap gap-2">
+                                <li><span class="service-tag">Mobile Applications</span></li>
+                                <li><span class="service-tag">iOS</span></li>
+                                <li><span class="service-tag">Android</span></li>
+                            </ul>
+                        </article>
+
+                        <article class="flex h-full flex-col rounded-xl bg-c-light p-6 xl:p-10">
+                            <div
+                                class="mb-4 flex items-center gap-4 sm:mb-2 sm:flex-col sm:items-start"
+                            >
+                                <svg
+                                    class="size-16 shrink-0 rounded-xl bg-[#43a3aa] p-2 text-white"
+                                    aria-hidden="true"
+                                >
+                                    <use href="assets/images/sprite.svg#service-layout"></use>
+                                </svg>
+                                <h3 class="font-normal text-black">UX/UI Design</h3>
+                            </div>
+                            <p class="mb-6 text-base leading-6 text-[#272e34]">
+                                Deliver product designs with clear user flows, reusable components,
+                                and accessible layouts.
+                            </p>
+                            <ul class="mt-auto flex flex-wrap gap-2">
+                                <li><span class="service-tag">UX Design</span></li>
+                                <li><span class="service-tag">UI Design</span></li>
+                            </ul>
+                        </article>
+
+                        <article class="flex h-full flex-col rounded-xl bg-c-light p-6 xl:p-10">
+                            <div
+                                class="mb-4 flex items-center gap-4 sm:mb-2 sm:flex-col sm:items-start"
+                            >
+                                <svg
+                                    class="size-16 shrink-0 rounded-xl bg-[#13926a] p-2 text-white"
+                                    aria-hidden="true"
+                                >
+                                    <use href="assets/images/sprite.svg#service-qa"></use>
+                                </svg>
+                                <h3 class="font-normal text-black">QA and Testing</h3>
+                            </div>
+                            <p class="mb-6 text-base leading-6 text-[#272e34]">
+                                Ship release-ready software with manual and automated testing that
+                                validate core flows end to end.
+                            </p>
+                            <ul class="mt-auto flex flex-wrap gap-2">
+                                <li><span class="service-tag">Quality Assurance</span></li>
+                            </ul>
+                        </article>
                     </div>
                 </div>
             </section>

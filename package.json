@@ -19,6 +19,6 @@
         "tailwindcss": "^4.3.3"
     },
     "dependencies": {
-        "swiper": "^14.2.0"
+        "marquee6k": "^1.3.4"
     }
 }
