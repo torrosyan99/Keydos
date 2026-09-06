@@ -43,6 +43,33 @@
         },
     ];
 
+    const technologies = [
+        'HTML5 / CSS3',
+        'JavaScript',
+        'TypeScript',
+        'React.js',
+        'Next.js',
+        'Vue.js',
+        'Flutter',
+        'React Native',
+        'Node.js',
+        'PHP (Laravel)',
+        'Python',
+        'Java',
+        '.NET',
+        'MySQL',
+        'PostgreSQL',
+        'MongoDB',
+        'AWS',
+        'Microsoft Azure',
+        'Google Cloud',
+        'Firebase',
+        'Docker',
+        'AI / Machine Learning',
+        'OpenAI / LLM Integration',
+        'REST API / GraphQL',
+    ];
+
     const createPartnerItem = ({ src, name, width, height }) => {
         const item = document.createElement('li');
         const content = document.createElement('div');
@@ -197,6 +224,73 @@
 
         carousel.dataset.uiReady = 'true';
     };
+
+    const initTechnologyMarquee = (marquee) => {
+        if (marquee.dataset.uiReady === 'true') return;
+
+        const track = marquee.querySelector('[data-tech-track]');
+        if (!track) return;
+
+        const createGroup = (isCopy = false) => {
+            const group = document.createElement('div');
+            group.className = 'tech-marquee-group';
+            if (isCopy) group.setAttribute('aria-hidden', 'true');
+
+            technologies.forEach((technology) => {
+                const item = document.createElement('span');
+                item.className = 'tech-marquee-item';
+                item.textContent = technology;
+                group.append(item);
+            });
+
+            return group;
+        };
+
+        track.replaceChildren(createGroup(), createGroup(true));
+        marquee.dataset.uiReady = 'true';
+    };
+
+    const initFeaturedSwiper = (swiperElement) => {
+        if (swiperElement.dataset.uiReady === 'true' || typeof window.Swiper !== 'function') {
+            return;
+        }
+
+        const carousel = swiperElement.closest('[data-featured-carousel]');
+        if (!carousel) return;
+
+        const previousButton = carousel.querySelector('[data-featured-prev]');
+        const nextButton = carousel.querySelector('[data-featured-next]');
+        const pagination = carousel.querySelector('[data-featured-pagination]');
+
+        const swiper = new window.Swiper(swiperElement, {
+            loop: true,
+            speed: 650,
+            grabCursor: false,
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+            },
+            autoplay: motionPreference.matches
+                ? false
+                : {
+                      delay: 4500,
+                      disableOnInteraction: false,
+                      pauseOnMouseEnter: true,
+                  },
+            navigation: {
+                nextEl: nextButton,
+                prevEl: previousButton,
+            },
+            pagination: {
+                el: pagination,
+                clickable: true,
+            },
+        });
+
+        swiperElement.dataset.uiReady = 'true';
+        swiperElement.featuredSwiper = swiper;
+    };
+
     const initRotator = (rotator) => {
         if (rotator.dataset.uiReady === 'true') return;
 
@@ -315,8 +409,16 @@
     const init = (root = document) => {
         root.querySelectorAll('[data-text-rotator]').forEach(initRotator);
         root.querySelectorAll('[data-partners-carousel]').forEach(initPartnersMarquee);
+        root.querySelectorAll('[data-tech-marquee]').forEach(initTechnologyMarquee);
+        root.querySelectorAll('[data-featured-swiper]').forEach(initFeaturedSwiper);
     };
 
-    window.HomepageUI = { init, initRotator, initPartnersMarquee };
+    window.HomepageUI = {
+        init,
+        initRotator,
+        initPartnersMarquee,
+        initTechnologyMarquee,
+        initFeaturedSwiper,
+    };
     init();
 })();

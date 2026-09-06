@@ -141,6 +141,58 @@
         @apply box-border pr-6;
     }
 
+    .featured-swiper {
+        @apply w-full bg-[#3d4751];
+    }
+
+    .featured-slide {
+        @apply flex min-h-[180px] items-center justify-center px-6 py-16 text-center;
+        @apply text-2xl font-bold uppercase tracking-[0.06em] text-c-light sm:min-h-[220px] sm:py-20 sm:text-3xl;
+    }
+
+    .featured-swiper-pagination {
+        @apply static! flex! w-auto! items-center justify-center gap-1.5;
+
+        .swiper-pagination-bullet {
+            @apply m-0! size-1.5 opacity-100;
+            --tw-bg-opacity: 1;
+            background-color: rgb(127 137 147 / var(--tw-bg-opacity)) !important;
+            -webkit-tap-highlight-color: transparent;
+            transition: none;
+        }
+
+        .swiper-pagination-bullet-active {
+            @apply bg-white!;
+        }
+    }
+
+    .tech-marquee {
+        @apply w-full overflow-hidden;
+    }
+
+    .tech-marquee-track {
+        @apply flex w-max whitespace-nowrap will-change-transform;
+        animation: tech-stack-marquee 65s linear infinite;
+        backface-visibility: hidden;
+    }
+
+    .tech-marquee[data-direction='right'] .tech-marquee-track {
+        animation-direction: reverse;
+    }
+
+    .tech-marquee:hover .tech-marquee-track {
+        animation-play-state: paused;
+    }
+
+    .tech-marquee-group {
+        @apply flex shrink-0 items-center;
+    }
+
+    .tech-marquee-item {
+        @apply cursor-default select-none px-5 text-[30px] font-bold leading-tight text-c-muted-gray-alt/20;
+        @apply transition-colors duration-200 hover:text-c-orange sm:px-7 sm:text-[40px] lg:px-8 lg:text-[52px];
+    }
+
     .service-tag {
         @apply inline-flex cursor-default items-center justify-center rounded-lg border border-c-blue px-2.5 py-1.5;
         @apply text-sm font-medium leading-5 text-c-blue transition-colors duration-200;
@@ -348,5 +400,17 @@
 
     .container {
         @apply max-w-380 px-4 mx-auto;
+    }
+}
+
+@keyframes tech-stack-marquee {
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tech-marquee-track {
+        animation: none;
     }
 }

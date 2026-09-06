@@ -16,6 +16,10 @@
             rel="stylesheet"
         />
         <link
+            href="assets/styles/swiper-bundle.min.css"
+            rel="stylesheet"
+        />
+        <link
             rel="preload"
             as="image"
             href="assets/images/hero-collaboration-v3.png"
@@ -31,6 +35,10 @@
         ></script>
         <script
             src="assets/scripts/marquee6k.js"
+            defer
+        ></script>
+        <script
+            src="assets/scripts/swiper-bundle.min.js"
             defer
         ></script>
         <script
@@ -2363,6 +2371,199 @@
                             </ul>
                         </article>
                     </div>
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="featured-heading"
+                class="relative isolate overflow-hidden bg-c-light pb-16 pt-16 sm:pt-20 lg:pb-20 lg:pt-24"
+            >
+                <div
+                    class="pointer-events-none absolute -top-[165px] left-1/2 z-0 h-[245px] w-[137vw] -translate-x-1/2 rounded-[50%] bg-white sm:-top-[220px] sm:h-[320px] sm:w-[125vw] lg:-top-[310px] lg:h-[440px] lg:w-[118vw] xl:-top-[330px] xl:h-[470px]"
+                    aria-hidden="true"
+                ></div>
+
+                <div class="container relative z-10 max-w-[1008px]">
+                    <div class="overflow-hidden rounded-2xl shadow-default">
+                        <div
+                            class="flex flex-col items-center gap-4 bg-[#52606d] px-5 py-5 sm:px-7 lg:flex-row lg:justify-between lg:px-8 lg:py-6"
+                        >
+                            <h2
+                                id="featured-heading"
+                                class="shrink-0 text-xl font-medium leading-7 text-white lg:text-2xl lg:leading-8"
+                            >
+                                As featured in...
+                            </h2>
+                            <div
+                                class="flex w-full flex-wrap items-center justify-center gap-x-7 gap-y-4 sm:justify-between lg:max-w-[630px] lg:gap-12"
+                            >
+                                <img
+                                    class="h-5 w-auto object-contain lg:h-6"
+                                    src="assets/images/featured/cnbc.svg"
+                                    width="101"
+                                    height="19"
+                                    alt="CNBC"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <img
+                                    class="h-5 w-auto object-contain lg:h-6"
+                                    src="assets/images/featured/forbes.svg"
+                                    width="79"
+                                    height="21"
+                                    alt="Forbes"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <img
+                                    class="h-4 w-auto object-contain lg:h-5"
+                                    src="assets/images/featured/insider.svg"
+                                    width="99"
+                                    height="15"
+                                    alt="Insider"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                                <img
+                                    class="h-4 w-auto object-contain lg:h-5"
+                                    src="assets/images/featured/bloomberg.svg"
+                                    width="100"
+                                    height="18"
+                                    alt="Bloomberg"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            </div>
+                        </div>
+
+                        <div
+                            data-featured-carousel
+                            class="bg-[#3d4751]"
+                        >
+                            <div
+                                class="featured-swiper swiper"
+                                data-featured-swiper
+                            >
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="featured-slide">Coming soon</div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="featured-slide">Coming soon</div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="featured-slide">Coming soon</div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="featured-slide">Coming soon</div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="featured-slide">Coming soon</div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="featured-slide">Coming soon</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="flex min-h-14 items-center gap-3 border-t border-white/15 px-4 py-3 text-white"
+                            >
+                                <button
+                                    type="button"
+                                    class="group mr-auto inline-flex cursor-pointer items-center gap-2 text-sm transition-transform duration-300 ease-out hover:-translate-x-2 disabled:cursor-default disabled:opacity-40"
+                                    data-featured-prev
+                                    aria-label="Previous featured slide"
+                                >
+                                    <svg
+                                        class="size-5 rotate-180"
+                                        aria-hidden="true"
+                                    >
+                                        <use href="assets/images/sprite.svg#arrow-right"></use>
+                                    </svg>
+                                    <span class="hidden sm:inline">Previous</span>
+                                </button>
+
+                                <div
+                                    class="featured-swiper-pagination"
+                                    data-featured-pagination
+                                ></div>
+
+                                <button
+                                    type="button"
+                                    class="group ml-auto inline-flex cursor-pointer items-center gap-2 text-sm transition-transform duration-300 ease-out hover:translate-x-2 disabled:cursor-default disabled:opacity-40"
+                                    data-featured-next
+                                    aria-label="Next featured slide"
+                                >
+                                    <span class="hidden sm:inline">Next</span>
+                                    <svg
+                                        class="size-5"
+                                        aria-hidden="true"
+                                    >
+                                        <use href="assets/images/sprite.svg#arrow-right"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                aria-labelledby="technology-stack-heading"
+                class="overflow-hidden bg-c-light py-16 sm:py-20 lg:py-24"
+            >
+                <div class="container mb-12 max-w-[1200px] text-center sm:mb-16">
+                    <h2
+                        id="technology-stack-heading"
+                        class="mx-auto max-w-[820px] text-[32px] font-medium leading-[1.2] text-[#272e34] sm:text-[38px] lg:text-[48px] lg:leading-[60px]"
+                    >
+                        Your entire tech stack, expertly handled<span class="text-c-orange">.</span>
+                    </h2>
+                    <p
+                        class="mx-auto mt-5 max-w-3xl text-base font-normal leading-7 text-c-muted-gray-alt sm:text-lg lg:text-xl lg:leading-[30px]"
+                    >
+                        We work across 100+ technologies and cutting-edge AI tools to build
+                        scalable, future-ready solutions.
+                    </p>
+                </div>
+
+                <div class="flex w-full flex-col gap-4 sm:gap-6 lg:gap-8">
+                    <div
+                        class="tech-marquee"
+                        data-tech-marquee
+                        data-direction="left"
+                    >
+                        <div
+                            class="tech-marquee-track"
+                            data-tech-track
+                        ></div>
+                    </div>
+                    <div
+                        class="tech-marquee"
+                        data-tech-marquee
+                        data-direction="right"
+                    >
+                        <div
+                            class="tech-marquee-track"
+                            data-tech-track
+                        ></div>
+                    </div>
+                </div>
+
+                <div class="mt-14 flex justify-center sm:mt-18">
+                    <a
+                        href="#"
+                        class="group inline-flex items-center gap-2 border-b-2 border-c-dark pb-1 text-sm font-semibold text-c-dark transition-colors hover:border-c-orange hover:text-c-orange"
+                    >
+                        Our full repertoire
+                        <svg
+                            class="size-4 transition-transform duration-200 group-hover:translate-x-1"
+                            aria-hidden="true"
+                        >
+                            <use href="assets/images/sprite.svg#arrow-right"></use>
+                        </svg>
+                    </a>
                 </div>
             </section>
         </main>
