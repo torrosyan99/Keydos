@@ -46,7 +46,7 @@
         <!-- Site header -->
         <header
             id="site-header"
-            class="fixed inset-x-0 top-0 z-50 h-20 border-b border-c-border bg-white transition-[translate,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [&_.mega-list]:space-y-3 [&_.mega-grid_.mega-item:hover]:bg-transparent [&_.mega-grid_.mega-item:hover]:text-c-slate [&_.mega-left_.link-arrow]:text-c-teal [&_.mega-left_.link-arrow:hover]:text-c-teal [&_.mega-left_.mega-link-icon]:bg-c-teal/10 [&_.mega-left_.mega-link-icon]:text-c-teal [&_.mega-left_.mega-link:hover]:text-c-dark [&_.mega-left_.mega-link:hover_.mega-link-icon]:bg-c-orange/15 [&_.mega-left_.mega-link:hover_.mega-link-icon]:text-c-orange [&_.mega-left_.mega-stat-icon]:text-c-teal"
+            class="fixed inset-x-0 top-0 z-50 h-20 border-b border-c-border bg-white transition-[translate,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [&_.btn-cta]:h-10 [&_.mega-list]:space-y-3 [&_.mega-grid_.mega-item:hover]:bg-transparent [&_.mega-grid_.mega-item:hover]:text-c-slate [&_.mega-left_.link-arrow]:text-c-teal [&_.mega-left_.link-arrow:hover]:text-c-teal [&_.mega-left_.mega-link-icon]:bg-c-teal/10 [&_.mega-left_.mega-link-icon]:text-c-teal [&_.mega-left_.mega-link:hover]:text-c-dark [&_.mega-left_.mega-link:hover_.mega-link-icon]:bg-c-orange/15 [&_.mega-left_.mega-link:hover_.mega-link-icon]:text-c-orange [&_.mega-left_.mega-stat-icon]:text-c-teal"
             data-menu-open="false"
         >
             <div class="flex h-full items-center gap-6 px-md">
@@ -161,11 +161,13 @@
                     </ul>
                 </nav>
 
-                <a
-                    href="#"
-                    class="btn-primary max-lg:hidden"
-                    >Schedule a Call</a
-                >
+                <div class="max-lg:hidden">
+                    <a
+                        href="#"
+                        class="btn-cta"
+                        >Schedule a Call</a
+                    >
+                </div>
 
                 <!-- Mobile menu trigger -->
                 <button
@@ -1674,374 +1676,402 @@
                 aria-hidden="true"
                 inert
             >
-                <div class="divide-y divide-c-border">
-                    <div class="py-1">
-                        <button
-                            type="button"
-                            class="group flex min-h-14 w-full items-center justify-between px-1 text-left text-base font-bold text-c-dark transition-colors hover:text-c-teal data-[open=true]:text-c-teal"
-                            data-mobile-toggle="mobile-services"
-                            data-open="false"
-                            aria-expanded="false"
-                            aria-controls="mobile-services"
-                        >
-                            <span>Services</span>
-                            <svg
-                                class="size-3.5 transition-transform duration-300 group-data-[open=true]:rotate-180"
-                                aria-hidden="true"
+                <div class="flex min-h-full flex-col">
+                    <div class="divide-y divide-c-border">
+                        <div class="py-1">
+                            <button
+                                type="button"
+                                class="group flex min-h-14 w-full items-center justify-between px-1 text-left text-base font-bold text-c-dark transition-colors hover:text-c-teal data-[open=true]:text-c-teal"
+                                data-mobile-toggle="mobile-services"
+                                data-open="false"
+                                aria-expanded="false"
+                                aria-controls="mobile-services"
                             >
-                                <use href="assets/images/sprite.svg#chevron-down"></use>
-                            </svg>
-                        </button>
-                        <div
-                            id="mobile-services"
-                            class="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-out data-[open=true]:grid-rows-[1fr] data-[open=true]:opacity-100"
-                            data-mobile-panel
-                            data-open="false"
-                            aria-hidden="true"
-                            inert
-                        >
-                            <div class="overflow-hidden">
-                                <div
-                                    class="grid gap-1 pb-4 sm:grid-cols-2 [&_a]:flex [&_a]:min-h-10 [&_a]:items-center [&_a]:gap-3 [&_a]:px-3 [&_a]:text-sm [&_a:not(.link-arrow)]:text-c-slate [&_svg]:block [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:text-c-orange"
+                                <span>Services</span>
+                                <svg
+                                    class="size-3.5 transition-transform duration-300 group-data-[open=true]:rotate-180"
+                                    aria-hidden="true"
                                 >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#sparkles"></use>
-                                        </svg>
-                                        <span>AI Development</span></a
+                                    <use href="assets/images/sprite.svg#chevron-down"></use>
+                                </svg>
+                            </button>
+                            <div
+                                id="mobile-services"
+                                class="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-out data-[open=true]:grid-rows-[1fr] data-[open=true]:opacity-100"
+                                data-mobile-panel
+                                data-open="false"
+                                aria-hidden="true"
+                                inert
+                            >
+                                <div class="overflow-hidden">
+                                    <div
+                                        class="grid gap-1 pb-4 sm:grid-cols-2 [&_a]:flex [&_a]:min-h-10 [&_a]:items-center [&_a]:gap-3 [&_a]:px-3 [&_a]:text-sm [&_a:not(.link-arrow)]:text-c-slate [&_svg]:block [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:text-c-orange"
                                     >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#globe"></use>
-                                        </svg>
-                                        <span>Web Development</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#mobile"></use>
-                                        </svg>
-                                        <span>Mobile App Development</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#cloud"></use>
-                                        </svg>
-                                        <span>SaaS Development</span></a
-                                    >
-                                    <a
-                                        href="#"
-                                        class="link-arrow"
-                                    >
-                                        <span>All Services</span>
-                                        <svg
-                                            class="link-arrow-icon"
-                                            aria-hidden="true"
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#sparkles"></use>
+                                            </svg>
+                                            <span>AI Development</span></a
                                         >
-                                            <use href="assets/images/sprite.svg#arrow-right"></use>
-                                        </svg>
-                                    </a>
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#globe"></use>
+                                            </svg>
+                                            <span>Web Development</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#mobile"></use>
+                                            </svg>
+                                            <span>Mobile App Development</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#cloud"></use>
+                                            </svg>
+                                            <span>SaaS Development</span></a
+                                        >
+                                        <a
+                                            href="#"
+                                            class="link-arrow"
+                                        >
+                                            <span>All Services</span>
+                                            <svg
+                                                class="link-arrow-icon"
+                                                aria-hidden="true"
+                                            >
+                                                <use
+                                                    href="assets/images/sprite.svg#arrow-right"
+                                                ></use>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="py-1">
-                        <button
-                            type="button"
-                            class="group flex min-h-14 w-full items-center justify-between px-1 text-left text-base font-bold text-c-dark transition-colors hover:text-c-teal data-[open=true]:text-c-teal"
-                            data-mobile-toggle="mobile-technologies"
-                            data-open="false"
-                            aria-expanded="false"
-                            aria-controls="mobile-technologies"
-                        >
-                            <span>Technologies</span>
-                            <svg
-                                class="size-3.5 transition-transform duration-300 group-data-[open=true]:rotate-180"
-                                aria-hidden="true"
+                        <div class="py-1">
+                            <button
+                                type="button"
+                                class="group flex min-h-14 w-full items-center justify-between px-1 text-left text-base font-bold text-c-dark transition-colors hover:text-c-teal data-[open=true]:text-c-teal"
+                                data-mobile-toggle="mobile-technologies"
+                                data-open="false"
+                                aria-expanded="false"
+                                aria-controls="mobile-technologies"
                             >
-                                <use href="assets/images/sprite.svg#chevron-down"></use>
-                            </svg>
-                        </button>
-                        <div
-                            id="mobile-technologies"
-                            class="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-out data-[open=true]:grid-rows-[1fr] data-[open=true]:opacity-100"
-                            data-mobile-panel
-                            data-open="false"
-                            aria-hidden="true"
-                            inert
-                        >
-                            <div class="overflow-hidden">
-                                <div
-                                    class="grid gap-1 pb-4 sm:grid-cols-2 [&_a]:flex [&_a]:min-h-10 [&_a]:items-center [&_a]:gap-3 [&_a]:px-3 [&_a]:text-sm [&_a:not(.link-arrow)]:text-c-slate [&_svg]:block [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:text-c-orange"
+                                <span>Technologies</span>
+                                <svg
+                                    class="size-3.5 transition-transform duration-300 group-data-[open=true]:rotate-180"
+                                    aria-hidden="true"
                                 >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#sparkles"></use>
-                                        </svg>
-                                        <span>AI &amp; Machine Learning</span></a
+                                    <use href="assets/images/sprite.svg#chevron-down"></use>
+                                </svg>
+                            </button>
+                            <div
+                                id="mobile-technologies"
+                                class="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-out data-[open=true]:grid-rows-[1fr] data-[open=true]:opacity-100"
+                                data-mobile-panel
+                                data-open="false"
+                                aria-hidden="true"
+                                inert
+                            >
+                                <div class="overflow-hidden">
+                                    <div
+                                        class="grid gap-1 pb-4 sm:grid-cols-2 [&_a]:flex [&_a]:min-h-10 [&_a]:items-center [&_a]:gap-3 [&_a]:px-3 [&_a]:text-sm [&_a:not(.link-arrow)]:text-c-slate [&_svg]:block [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:text-c-orange"
                                     >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#code"></use>
-                                        </svg>
-                                        <span>Web &amp; Mobile Technologies</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#cloud"></use>
-                                        </svg>
-                                        <span>Cloud &amp; DevOps</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#link-chain"></use>
-                                        </svg>
-                                        <span>API &amp; Integrations</span></a
-                                    >
-                                    <a
-                                        href="#"
-                                        class="link-arrow"
-                                    >
-                                        <span>All Technologies</span>
-                                        <svg
-                                            class="link-arrow-icon"
-                                            aria-hidden="true"
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#sparkles"></use>
+                                            </svg>
+                                            <span>AI &amp; Machine Learning</span></a
                                         >
-                                            <use href="assets/images/sprite.svg#arrow-right"></use>
-                                        </svg>
-                                    </a>
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#code"></use>
+                                            </svg>
+                                            <span>Web &amp; Mobile Technologies</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#cloud"></use>
+                                            </svg>
+                                            <span>Cloud &amp; DevOps</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use
+                                                    href="assets/images/sprite.svg#link-chain"
+                                                ></use>
+                                            </svg>
+                                            <span>API &amp; Integrations</span></a
+                                        >
+                                        <a
+                                            href="#"
+                                            class="link-arrow"
+                                        >
+                                            <span>All Technologies</span>
+                                            <svg
+                                                class="link-arrow-icon"
+                                                aria-hidden="true"
+                                            >
+                                                <use
+                                                    href="assets/images/sprite.svg#arrow-right"
+                                                ></use>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="py-1">
-                        <button
-                            type="button"
-                            class="group flex min-h-14 w-full items-center justify-between px-1 text-left text-base font-bold text-c-dark transition-colors hover:text-c-teal data-[open=true]:text-c-teal"
-                            data-mobile-toggle="mobile-industries"
-                            data-open="false"
-                            aria-expanded="false"
-                            aria-controls="mobile-industries"
-                        >
-                            <span>Industries</span>
-                            <svg
-                                class="size-3.5 transition-transform duration-300 group-data-[open=true]:rotate-180"
-                                aria-hidden="true"
+                        <div class="py-1">
+                            <button
+                                type="button"
+                                class="group flex min-h-14 w-full items-center justify-between px-1 text-left text-base font-bold text-c-dark transition-colors hover:text-c-teal data-[open=true]:text-c-teal"
+                                data-mobile-toggle="mobile-industries"
+                                data-open="false"
+                                aria-expanded="false"
+                                aria-controls="mobile-industries"
                             >
-                                <use href="assets/images/sprite.svg#chevron-down"></use>
-                            </svg>
-                        </button>
-                        <div
-                            id="mobile-industries"
-                            class="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-out data-[open=true]:grid-rows-[1fr] data-[open=true]:opacity-100"
-                            data-mobile-panel
-                            data-open="false"
-                            aria-hidden="true"
-                            inert
-                        >
-                            <div class="overflow-hidden">
-                                <div
-                                    class="grid gap-1 pb-4 sm:grid-cols-2 [&_a]:flex [&_a]:min-h-10 [&_a]:items-center [&_a]:gap-3 [&_a]:px-3 [&_a]:text-sm [&_a:not(.link-arrow)]:text-c-slate [&_svg]:block [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:text-c-orange"
+                                <span>Industries</span>
+                                <svg
+                                    class="size-3.5 transition-transform duration-300 group-data-[open=true]:rotate-180"
+                                    aria-hidden="true"
                                 >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#heart"></use>
-                                        </svg>
-                                        <span>Healthcare</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#dollar"></use>
-                                        </svg>
-                                        <span>Fintech</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#shopping-bag"></use>
-                                        </svg>
-                                        <span>E-commerce</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#school"></use>
-                                        </svg>
-                                        <span>Education (EdTech)</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#building"></use>
-                                        </svg>
-                                        <span>Real Estate</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#logistics"></use>
-                                        </svg>
-                                        <span>Logistics &amp; Supply Chain</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#startup"></use>
-                                        </svg>
-                                        <span>Startups &amp; SaaS</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#enterprise"></use>
-                                        </svg>
-                                        <span>Enterprise Solutions</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#retail"></use>
-                                        </svg>
-                                        <span>Retail &amp; Consumer Apps</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#travel"></use>
-                                        </svg>
-                                        <span>Travel &amp; Hospitality</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#media"></use>
-                                        </svg>
-                                        <span>Media &amp; Entertainment</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#automotive"></use>
-                                        </svg>
-                                        <span>Automotive</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#bank"></use>
-                                        </svg>
-                                        <span>Banking &amp; Insurance</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use
-                                                href="assets/images/sprite.svg#manufacturing"
-                                            ></use>
-                                        </svg>
-                                        <span>Manufacturing</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#construction"></use>
-                                        </svg>
-                                        <span>Construction</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#workforce"></use>
-                                        </svg>
-                                        <span>HR &amp; Workforce Management</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#marketing"></use>
-                                        </svg>
-                                        <span>Marketing &amp; Martech</span></a
-                                    >
-                                    <a href="#">
-                                        <svg aria-hidden="true">
-                                            <use href="assets/images/sprite.svg#telecom"></use>
-                                        </svg>
-                                        <span>Telecommunications</span></a
-                                    >
-                                    <a
-                                        href="#"
-                                        class="link-arrow"
-                                    >
-                                        <span>All Industries</span>
-                                        <svg
-                                            class="link-arrow-icon"
-                                            aria-hidden="true"
-                                        >
-                                            <use href="assets/images/sprite.svg#arrow-right"></use>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="py-1">
-                        <button
-                            type="button"
-                            class="group flex min-h-14 w-full items-center justify-between px-1 text-left text-base font-bold text-c-dark transition-colors hover:text-c-teal data-[open=true]:text-c-teal"
-                            data-mobile-toggle="mobile-about"
-                            data-open="false"
-                            aria-expanded="false"
-                            aria-controls="mobile-about"
-                        >
-                            <span>About</span>
-                            <svg
-                                class="size-3.5 transition-transform duration-300 group-data-[open=true]:rotate-180"
+                                    <use href="assets/images/sprite.svg#chevron-down"></use>
+                                </svg>
+                            </button>
+                            <div
+                                id="mobile-industries"
+                                class="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-out data-[open=true]:grid-rows-[1fr] data-[open=true]:opacity-100"
+                                data-mobile-panel
+                                data-open="false"
                                 aria-hidden="true"
+                                inert
                             >
-                                <use href="assets/images/sprite.svg#chevron-down"></use>
-                            </svg>
-                        </button>
-                        <div
-                            id="mobile-about"
-                            class="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-out data-[open=true]:grid-rows-[1fr] data-[open=true]:opacity-100"
-                            data-mobile-panel
-                            data-open="false"
-                            aria-hidden="true"
-                            inert
-                        >
-                            <div class="overflow-hidden">
-                                <div class="pb-4">
-                                    <p
-                                        class="border-l-2 border-c-orange pl-4 text-sm leading-6 text-c-gray"
+                                <div class="overflow-hidden">
+                                    <div
+                                        class="grid gap-1 pb-4 sm:grid-cols-2 [&_a]:flex [&_a]:min-h-10 [&_a]:items-center [&_a]:gap-3 [&_a]:px-3 [&_a]:text-sm [&_a:not(.link-arrow)]:text-c-slate [&_svg]:block [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:text-c-orange"
                                     >
-                                        Learn more about Kkeydos — our mission, team, and how we can
-                                        help you succeed.
-                                    </p>
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#heart"></use>
+                                            </svg>
+                                            <span>Healthcare</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#dollar"></use>
+                                            </svg>
+                                            <span>Fintech</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use
+                                                    href="assets/images/sprite.svg#shopping-bag"
+                                                ></use>
+                                            </svg>
+                                            <span>E-commerce</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#school"></use>
+                                            </svg>
+                                            <span>Education (EdTech)</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#building"></use>
+                                            </svg>
+                                            <span>Real Estate</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use
+                                                    href="assets/images/sprite.svg#logistics"
+                                                ></use>
+                                            </svg>
+                                            <span>Logistics &amp; Supply Chain</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#startup"></use>
+                                            </svg>
+                                            <span>Startups &amp; SaaS</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use
+                                                    href="assets/images/sprite.svg#enterprise"
+                                                ></use>
+                                            </svg>
+                                            <span>Enterprise Solutions</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#retail"></use>
+                                            </svg>
+                                            <span>Retail &amp; Consumer Apps</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#travel"></use>
+                                            </svg>
+                                            <span>Travel &amp; Hospitality</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#media"></use>
+                                            </svg>
+                                            <span>Media &amp; Entertainment</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use
+                                                    href="assets/images/sprite.svg#automotive"
+                                                ></use>
+                                            </svg>
+                                            <span>Automotive</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#bank"></use>
+                                            </svg>
+                                            <span>Banking &amp; Insurance</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use
+                                                    href="assets/images/sprite.svg#manufacturing"
+                                                ></use>
+                                            </svg>
+                                            <span>Manufacturing</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use
+                                                    href="assets/images/sprite.svg#construction"
+                                                ></use>
+                                            </svg>
+                                            <span>Construction</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use
+                                                    href="assets/images/sprite.svg#workforce"
+                                                ></use>
+                                            </svg>
+                                            <span>HR &amp; Workforce Management</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use
+                                                    href="assets/images/sprite.svg#marketing"
+                                                ></use>
+                                            </svg>
+                                            <span>Marketing &amp; Martech</span></a
+                                        >
+                                        <a href="#">
+                                            <svg aria-hidden="true">
+                                                <use href="assets/images/sprite.svg#telecom"></use>
+                                            </svg>
+                                            <span>Telecommunications</span></a
+                                        >
+                                        <a
+                                            href="#"
+                                            class="link-arrow"
+                                        >
+                                            <span>All Industries</span>
+                                            <svg
+                                                class="link-arrow-icon"
+                                                aria-hidden="true"
+                                            >
+                                                <use
+                                                    href="assets/images/sprite.svg#arrow-right"
+                                                ></use>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="py-1">
+                            <button
+                                type="button"
+                                class="group flex min-h-14 w-full items-center justify-between px-1 text-left text-base font-bold text-c-dark transition-colors hover:text-c-teal data-[open=true]:text-c-teal"
+                                data-mobile-toggle="mobile-about"
+                                data-open="false"
+                                aria-expanded="false"
+                                aria-controls="mobile-about"
+                            >
+                                <span>About</span>
+                                <svg
+                                    class="size-3.5 transition-transform duration-300 group-data-[open=true]:rotate-180"
+                                    aria-hidden="true"
+                                >
+                                    <use href="assets/images/sprite.svg#chevron-down"></use>
+                                </svg>
+                            </button>
+                            <div
+                                id="mobile-about"
+                                class="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-out data-[open=true]:grid-rows-[1fr] data-[open=true]:opacity-100"
+                                data-mobile-panel
+                                data-open="false"
+                                aria-hidden="true"
+                                inert
+                            >
+                                <div class="overflow-hidden">
+                                    <div class="pb-4">
+                                        <p
+                                            class="border-l-2 border-c-orange pl-4 text-sm leading-6 text-c-gray"
+                                        >
+                                            Learn more about Kkeydos — our mission, team, and how we
+                                            can help you succeed.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a
+                            href="#"
+                            class="flex items-center min-h-14 px-1 text-base font-bold text-c-dark transition-colors"
+                        >
+                            Our Work</a
+                        >
+                        <a
+                            href="#"
+                            class="flex items-center min-h-14 px-1 text-base font-bold text-c-dark transition-colors"
+                        >
+                            Blog</a
+                        >
                     </div>
-                    <a
-                        href="#"
-                        class="flex items-center min-h-14 px-1 text-base font-bold text-c-dark transition-colors"
+                    <div
+                        class="mt-auto flex w-full justify-center pt-5 [&_.btn-cta]:w-full [&_.btn-cta]:max-w-[480px]"
                     >
-                        Our Work</a
-                    >
-                    <a
-                        href="#"
-                        class="flex items-center min-h-14 px-1 text-base font-bold text-c-dark transition-colors"
-                    >
-                        Blog</a
-                    >
+                        <a
+                            href="#"
+                            class="btn-cta"
+                            >Schedule a Call</a
+                        >
+                    </div>
                 </div>
-                <a
-                    href="#"
-                    class="btn-primary mt-5 flex min-h-12 w-full leading-normal shadow-default transition-all hover:bg-c-teal hover:shadow-default"
-                    >Schedule a Call</a
-                >
             </nav>
         </header>
 
         <main>
-            <section class="relative isolate overflow-hidden">
+            <section class="relative isolate overflow-hidden bg-c-light">
                 <div
-                    class="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.99)_0%,rgba(255,255,255,0.94)_70%,rgba(255,255,255,0.72)_100%),url('../images/hero-collaboration-v3.png')] bg-cover bg-[position:68%_50%] bg-no-repeat sm:bg-[linear-gradient(90deg,rgba(255,255,255,1)_0%,rgba(255,255,255,0.96)_42%,rgba(255,255,255,0.58)_72%,rgba(255,255,255,0.12)_100%),url('../images/hero-collaboration-v3.png')] sm:bg-[position:62%_50%] lg:bg-[linear-gradient(90deg,rgba(255,255,255,1)_0%,rgba(255,255,255,1)_30%,rgba(255,255,255,0.94)_40%,rgba(255,255,255,0.62)_52%,rgba(255,255,255,0.18)_68%,rgba(255,255,255,0)_82%),url('../images/hero-collaboration-v3.png')] lg:bg-[position:58%_50%]"
+                    class="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgb(246_247_248)_0%,rgb(246_247_248)_34%,rgb(246_247_248/0.96)_43%,rgb(246_247_248/0.72)_54%,rgb(246_247_248/0.18)_70%,rgb(246_247_248/0)_82%),url('../images/hero-collaboration-v3.png')] bg-cover bg-[position:64%_52%] bg-no-repeat max-lg:bg-[linear-gradient(180deg,rgb(246_247_248)_0%,rgb(246_247_248/0.96)_46%,rgb(246_247_248/0.86)_76%,rgb(246_247_248/0.72)_100%),url('../images/hero-collaboration-v3.png')] max-lg:bg-[position:70%_50%] xl:bg-[position:58%_52%] min-[1512px]:bg-[position:52%_52%]"
                     aria-hidden="true"
                 ></div>
 
                 <div
-                    class="relative z-30 mx-auto flex w-full max-w-[1512px] items-center px-md pb-24 pt-32 sm:pb-32 sm:pt-40 lg:pb-40 lg:pt-50"
+                    class="relative z-30 mx-auto flex w-full max-w-[1512px] items-center px-md pb-24 pt-28 lg:pb-40 lg:pt-34"
                 >
                     <div
-                        class="max-w-140"
+                        class="w-full text-left max-w-[500px] lg:max-w-[660px] xl:max-w-[760px]"
                         data-rotator-scope
                     >
                         <p
-                            class="mb-6 flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-c-teal"
+                            class="mb-6 flex items-center justify-start gap-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-c-teal"
                         >
                             <span
                                 class="size-1.5 shrink-0 rounded-full bg-c-teal shadow-focus"
@@ -2051,14 +2081,14 @@
                         </p>
                         <h1
                             id="hero-title"
-                            class="font-semibold leading-[1.08] tracking-[-0.045em] text-c-dark"
+                            class="hero-heading tracking-[-0.045em] lg:max-w-[540px] xl:max-w-[720px] min-[1512px]:max-w-[760px]"
                         >
                             Accelerate your product roadmap with scalable software solutions.
                             <span class="sr-only"
                                 >AI Development, Web Development, and Mobile Development.</span
                             >
                             <span
-                                class="relative mt-2 block h-[1.25em] overflow-hidden text-c-orange"
+                                class="relative mt-2 block h-[1.25em] overflow-hidden font-medium text-c-orange"
                                 data-text-rotator
                                 data-rotator-interval="2200"
                                 aria-hidden="true"
@@ -2080,15 +2110,13 @@
                                 >
                             </span>
                         </h1>
-                        <p
-                            class="mt-6 max-w-[490px] text-base leading-7 text-c-gray xl:text-lg xl:leading-[1.65]"
-                        >
+                        <p class="hero-subheading mt-6 xl:max-w-[620px]">
                             We design and build high-performance digital products tailored to your
                             business goals &mdash; from idea to scalable solutions.
                         </p>
-                        <div class="mt-9 flex flex-wrap items-center gap-5">
+                        <div class="mt-9 flex flex-wrap items-center justify-start gap-5">
                             <a
-                                class="btn-primary min-h-13 px-6"
+                                class="btn-cta"
                                 href="#"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -2104,12 +2132,12 @@
                 ></div>
             </section>
             <section
-                class="relative z-30 -mt-8 bg-transparent pb-16 sm:-mt-12 sm:pb-20 lg:-mt-20 lg:pb-24"
+                class="relative z-30 -mt-2 bg-transparent pb-16 sm:-mt-4 sm:pb-20 lg:-mt-8 lg:pb-24"
                 aria-labelledby="clients-title"
             >
-                <div class="container max-w-[1200px]">
+                <div class="container max-w-[1200px] px-20 max-xl:px-16 max-lg:px-10 max-sm:px-6">
                     <div
-                        class="grid items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-18 xl:gap-24"
+                        class="grid items-center gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-18 xl:gap-24"
                     >
                         <div class="max-w-[400px]">
                             <p

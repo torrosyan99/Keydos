@@ -2,6 +2,7 @@
 example
 node_modules
 src
+tmp
 
 # Local build helpers stay out of the repository.
 /scripts/
